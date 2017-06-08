@@ -3,10 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -29,7 +28,7 @@ public class ActionProcess implements ActionListener {
 
         DefaultMutableTreeNode head = new DefaultMutableTreeNode(name);
 
-        trip(route, head);
+        
         
         DefaultTreeModel treeModel = new DefaultTreeModel(head);
 
@@ -51,7 +50,7 @@ public class ActionProcess implements ActionListener {
         for (File h : dirFull) {
             if (h.isDirectory()) {
                 DefaultMutableTreeNode _new = new DefaultMutableTreeNode(h.getName());
-                head.setUserObject(h.getName());
+                _new.setUserObject(h.getName());
                 head.add(_new);
                 
 //                File _dir = new File(h.getAbsolutePath());
