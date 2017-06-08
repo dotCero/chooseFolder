@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -28,15 +27,22 @@ public class ActionProcess implements ActionListener {
 
         DefaultMutableTreeNode head = new DefaultMutableTreeNode(name);
 
-        
-        
+        try {
+            Thread t = new Thread(() -> {
+                trip(route, head);
+            });
+            t.start();
+        } catch (NullPointerException ex) {
+            System.out.println("Es Muy Amplia la carpeta reculiá!");
+        }
+
         DefaultTreeModel treeModel = new DefaultTreeModel(head);
 
         tree.setModel(treeModel);
     }
 
     private void trip(String route, DefaultMutableTreeNode head) {
-        
+
         File dir = new File(route);
         File[] dirFull = dir.listFiles();
 
@@ -52,11 +58,21 @@ public class ActionProcess implements ActionListener {
                 DefaultMutableTreeNode _new = new DefaultMutableTreeNode(h.getName());
                 _new.setUserObject(h.getName());
                 head.add(_new);
-                
+
 //                File _dir = new File(h.getAbsolutePath());
 //                File[] _dirFull = _dir.listFiles();
-                
-                trip(h.getAbsolutePath(),_new);
+                try {
+                    Thread th = new Thread(() -> {
+                        trip(h.getAbsolutePath(), _new);
+                    });
+                    try {
+                        th.start();
+                    } catch (NullPointerException hiloerror) {
+
+                    }
+                } catch (NullPointerException ex) {
+                    System.out.println("Es Muy Amplia la carpeta reculiá!");
+                }
             }
 
         }
