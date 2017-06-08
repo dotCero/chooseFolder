@@ -65,11 +65,7 @@ public class ActionProcess implements ActionListener {
                     Thread th = new Thread(() -> {
                         trip(h.getAbsolutePath(), _new);
                     });
-                    try {
-                        th.start();
-                    } catch (NullPointerException hiloerror) {
-
-                    }
+                    th.start();
                 } catch (NullPointerException ex) {
                     System.out.println("Es Muy Amplia la carpeta reculiá!");
                 }
