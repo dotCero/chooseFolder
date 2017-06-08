@@ -14,7 +14,7 @@ public class Main extends javax.swing.JFrame {
     
     public Main() {
         initComponents();
-        app.start(this, txtRoute);
+        app.start(this, txtRoute, treeMain);
         btnSearch.addActionListener(new ActionSearch(txtRoute));
         btnProcess.addActionListener(new ActionProcess(txtRoute, treeMain));
     }
