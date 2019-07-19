@@ -17,6 +17,7 @@ public class Main extends javax.swing.JFrame {
         app.start(this, txtRoute, treeMain);
         btnSearch.addActionListener(new ActionSearch(txtRoute));
         btnProcess.addActionListener(new ActionProcess(txtRoute, treeMain));
+        System.out.println("Test");
     }
 
     @SuppressWarnings("unchecked")
