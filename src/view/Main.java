@@ -6,7 +6,7 @@ import model.App;
 
 /**
  *
- * @author Dios Señor Magnífico Diego Andrés Lucero Verdugo
+ * @author Diego Lucero Verdugo
  */
 public class Main extends javax.swing.JFrame {
 
